@@ -57,6 +57,15 @@ public function registerBundles()
 }
 ```
 
+### Step 3: Configure the routing
+
+``` yaml
+# app/routing.yml
+supervision:
+    resource: "@SupervisionBundle/Controller/"
+    type:     annotation
+```
+
 ### Step 4: Configure the SupervisionBundle
 
 ``` yaml
