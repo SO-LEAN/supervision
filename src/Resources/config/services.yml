@@ -1,0 +1,5 @@
+services:
+  supervision:
+    class: Phppro\Supervision\Service\SupervisionService
+    calls:
+      - [setTokenStorage, [@security.token_storage]]

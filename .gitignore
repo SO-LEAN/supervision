@@ -1,0 +1,21 @@
+### IDE
+
+/.idea/
+
+
+### Composer
+
+/vendor/
+/composer.phar
+
+
+### Tools
+
+/bin/phpunit
+/bin/phploc
+/bin/phpcbf
+/bin/phpcs
+
+### QA
+
+/reports/
