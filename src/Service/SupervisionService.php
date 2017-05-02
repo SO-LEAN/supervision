@@ -27,6 +27,10 @@ class SupervisionService
      */
     protected $tokenStorage;
     /**
+     * @var array
+     */
+    protected $dataProviders = [];
+    /**
      * @param TokenStorageInterface $tokenStorage
      *
      * @return $this
@@ -37,6 +41,15 @@ class SupervisionService
 
         return $this;
     }
+
+    /**
+     * @param string       $name
+     * @param DataProvider $provider
+     */
+    public function addDataProvider($name, DataProvider $provider)
+    {
+        $this->dataProviders[$name] = $provider;
+    }
     /**
      * Returns useful information for Ping request.
      *
@@ -44,7 +57,7 @@ class SupervisionService
      */
     public function ping()
     {
-        return [
+        $data = [
             'date'          => new Datetime(),
             'startDuration' => defined('APP_TIME_START')
                 ? (microtime(true) - constant('APP_TIME_START'))
@@ -56,6 +69,16 @@ class SupervisionService
             ],
             'hostName' => gethostname(),
         ];
+
+        foreach ($this->dataProviders as $provider) {
+            /**
+             * @var DataProvider $provider
+             */
+            $data += $provider->provide();
+
+        }
+        
+        return $data;
     }
     /**
      * Returns the current logged in user identity.
