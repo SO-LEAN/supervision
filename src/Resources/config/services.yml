@@ -3,3 +3,6 @@ services:
     class: Phppro\Supervision\Service\SupervisionService
     calls:
       - [setTokenStorage, ["@security.token_storage"]]
+  provider_symfony:
+    class: Phppro\Supervision\Service\SymfonyDataProvider
+    public: false

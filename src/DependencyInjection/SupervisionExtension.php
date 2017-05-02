@@ -39,8 +39,7 @@ class SupervisionExtension extends Extension
 
         if (isset($config['providers']) && is_array($config['providers'])) {
             foreach ($config['providers'] as $provider) {
-                $container->register('provider_'.$provider['name'], $provider['provider']);
-                $container->getDefinition('supervision')->addMethodCall('addDataProvider', [$provider['name'], new Reference('provider_'.$provider['name'])]);
+                $container->getDefinition('supervision')->addMethodCall('addDataProvider', [$provider['name'], new Reference($provider['provider'])]);
             }
         }
     }

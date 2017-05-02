@@ -72,7 +72,7 @@ supervision:
 # app/config/config.yml
 supervision:
     providers:
-        - {name: "symfony", provider: "Phppro\\Supervision\\Service\\SymfonyDataProvider"}
+        - {name: "symfony", provider: "provider_symfony"}
 ```
 
 ### Next Steps
